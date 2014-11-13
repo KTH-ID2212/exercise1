@@ -11,6 +11,7 @@ import java.net.Socket;
 public class SlowConnectionHandler implements Runnable
 {
     private static final int DELAY_SECS = 6;
+    private static final int SECS_TO_MILLIS = 1000;
     private Socket clientSocket;
 
     /**
@@ -30,7 +31,6 @@ public class SlowConnectionHandler implements Runnable
     @Override
     public void run()
     {
-        int secsToMillis = 1000;
         try (BufferedInputStream in = new BufferedInputStream(clientSocket.getInputStream());
              BufferedOutputStream out = new BufferedOutputStream(clientSocket.getOutputStream()))
         {
@@ -51,7 +51,7 @@ public class SlowConnectionHandler implements Runnable
                 }
             }
 
-            Thread.sleep(DELAY_SECS * secsToMillis);
+            Thread.sleep(DELAY_SECS * SECS_TO_MILLIS);
 
             for (int i = bytesRead; i > 0; i--)
             {
