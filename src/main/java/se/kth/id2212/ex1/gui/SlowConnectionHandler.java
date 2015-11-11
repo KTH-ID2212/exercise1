@@ -10,7 +10,7 @@ import java.net.Socket;
  */
 public class SlowConnectionHandler implements Runnable
 {
-    private static final int DELAY_SECS = 6;
+    private static final int DELAY_SECS = 10;
     private static final int SECS_TO_MILLIS = 1000;
     private Socket clientSocket;
 
