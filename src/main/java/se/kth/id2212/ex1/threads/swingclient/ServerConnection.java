@@ -1,5 +1,5 @@
 
-package se.kth.id2212.ex1.gui;
+package se.kth.id2212.ex1.threads.swingclient;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
