@@ -39,9 +39,11 @@ public class SimpleClientController implements Initializable {
     }
 
     @FXML
-    private void reverseHandler(ActionEvent event) {
+    private void reverseHandler(ActionEvent event) throws IOException {
         reverseButton.setDisable(true);
-        new ReverseService().start();
+        connectButton.setDisable(false);
+        new ReverseService().start(); // multithreaded
+        //outputText.setText(server.callServer(reverseField.getText())); // singlethreaded
     }
 
     @Override
@@ -73,12 +75,10 @@ public class SimpleClientController implements Initializable {
         private ReverseService() {
             setOnSucceeded((WorkerStateEvent event) -> {
                 outputText.setText(getValue());
-                connectButton.setDisable(false);
             });
-            
+
             setOnFailed((WorkerStateEvent event) -> {
                 outputText.setText(getException().getMessage());
-                connectButton.setDisable(false);
             });
         }
 
