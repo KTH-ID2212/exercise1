@@ -1,6 +1,3 @@
-
-
-
 package se.kth.id2212.ex1.threads.javafxclient;
 
 import javafx.application.Application;
